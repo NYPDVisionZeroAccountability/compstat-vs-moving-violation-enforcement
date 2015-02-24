@@ -9,3 +9,13 @@ It would be a powerful advocacy tool to be able to show data and ask for more Vi
 In subsequent versions, NYPD staffing data will help complete the picture.
 
 We are trying to counter the "we don't have enough manpower to focus on streets" argument many Commanding Officers mention for their lackluster dangerous moving violation enforcement.
+
+
+
+
+
+
+
+
+Added a civic.json file so our project can be listed here: http://projects.betanyc.us/#!/
+and on other sites listing civic projects
