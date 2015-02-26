@@ -1,0 +1,19 @@
+{
+        "status": "Discovery",
+        "thumbnailUrl": "",
+        "bornAt": "CodeAcross New York NY",
+        "geography": "NYC",
+        "politicalEntity":"",
+        "type":"Web App",
+        "needs": [
+                {"need": ""},
+                {"need": ""},
+                {"need": ""}
+        ],
+        "categories": [
+                {"category": "Safe Streets"},
+                {"category": "Vision Zero"},
+                {"category": "Police Transparency"},
+                {"category": "NYPD Records"}
+        ]
+}
