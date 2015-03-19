@@ -9,8 +9,6 @@ import requests
 def point_inside_polygon(x,y,poly):
     n = len(poly)
     inside =False
-    if type(poly[0]) != list:
-        return False
 
     p1x,p1y = poly[0]
     for i in range(n+1):
@@ -38,12 +36,19 @@ def read_district_polygons():
         districts[precinct] = geometry
     return districts
 
+precincts_with_irregular_polygons = set([1, 17, 19, 23, 25, 40, 41, 45, 47, 48, 52, 61, 63, 69, 75, 81, 88, 100, 101, 106, 108, 113, 114, 121, 122])
+
 def get_precint_from_lat_lon(lon, lat, precincts):
     for precinct_id in precincts:
         polygons = precincts[precinct_id]
         for polygon in polygons:
-            if point_inside_polygon(lon, lat, polygon[0]):
-                return precinct_id
+            if precinct_id in precincts_with_irregular_polygons:
+                for polygon2 in polygon:
+                    if point_inside_polygon(lon, lat, polygon2):
+                        return precinct_id
+            else:
+                if point_inside_polygon(lon, lat, polygon):
+                    return precinct_id
 
 if __name__ == '__main__':
     precincts = read_district_polygons()
