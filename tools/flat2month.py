@@ -46,7 +46,22 @@ def filter_only_months_with_alldata(months):
             month_data = {}
             month_data['month'] = month
             month_data['name'] = get_month_name_from_key(month)
-            month_data['precincts'] = months[month]
+
+            precinct_data = []
+            for precinct_id in months[month]:
+                precinct = {}
+                incidents = []
+                for incident in months[month][precinct_id]:
+                    incidents.append({
+                        "type": incident,
+                        "val": months[month][precinct_id][incident]
+                    })
+
+                precinct['id'] = precinct_id
+                precinct['data'] = incidents
+                precinct_data.append(precinct)
+
+            month_data['precincts'] = precinct_data
             only_months_with_all_data.append(month_data)
 
     month_min = min([m['month'] for m in only_months_with_all_data])
