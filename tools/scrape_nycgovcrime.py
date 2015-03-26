@@ -38,7 +38,7 @@ def get_precinct_data(month, year, crime):
 
 if __name__ == '__main__':
     data = []
-    for year in range(2014, 2016):
+    for year in range(2009, 2016):
         for month in range(1, 12):
             for crime in ['MURDER', 'FELONY ASSAULT']:
                 precincts = get_precinct_data(month, year, crime)
