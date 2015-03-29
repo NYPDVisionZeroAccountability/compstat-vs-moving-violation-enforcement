@@ -1,0 +1,3 @@
+#!/bin/sh
+python tools/flat2month.py | tee jsonresults/comparison_by_month.json
+python tools/month2precinct.py | tee jsonresults/comparison_by_precinct.json
