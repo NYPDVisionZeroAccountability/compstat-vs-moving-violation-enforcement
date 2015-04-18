@@ -75,5 +75,6 @@ if __name__ == '__main__':
     months = {}
     normalize_flat_data(months, 'jsonresults/visionzero.json')
     normalize_flat_data(months, 'jsonresults/scrape_nycgovcrime.json')
+    normalize_flat_data(months, 'jsonresults/nypdbudget_monthly.json')
     only_months_with_all_data = filter_only_months_with_alldata(months)
     print(json.dumps(only_months_with_all_data, sort_keys=True, indent=4, separators=(',', ': ')))
