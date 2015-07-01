@@ -5,7 +5,7 @@ RUN apt-get -y install wget
 
 ENV SOLR_VERSION 5.2.1
 ENV SOLR solr-$SOLR_VERSION
-ENV SOLR_USER pp
+ENV SOLR_USER ubuntu
 
 RUN apt-get -y install lsof procps
 RUN mkdir -p /opt

@@ -5,13 +5,17 @@ package_update: true
 package_upgrade: true
 packages:
   - git
+  - btrfs-tools
+  - build-essential
+  - libdevmapper-dev
+  - libsqlite3-dev
 runcmd:
-  - ls compstat-vs-moving-violation-enforcement || git clone https://github.com/NYPDVisionZeroAccountability/compstat-vs-moving-violation-enforcement.git
-  - docker -v || compstat-vs-moving-violation-enforcement/ec2/builddocker.sh
+  - ls /compstat-vs-moving-violation-enforcement || git clone https://github.com/NYPDVisionZeroAccountability/compstat-vs-moving-violation-enforcement.git
+  - docker -v || /compstat-vs-moving-violation-enforcement/ec2/builddocker.sh
   - service docker restart
-  - docker build -t NYPDVisionZeroAccountability compstat-vs-moving-violation-enforcement/ec2/
-  - docker run -p 8983:8983 --name NYPDVisionZeroAccountability -t NYPDVisionZeroAccountability
-  - echo '#!bin/sh\ndocker start NYPDVisionZeroAccountability' >> /var/lib/cloud/scripts/per-boot/startnypdvza && chmod +x /var/lib/cloud/scripts/per-boot/startnypdvza
+  - docker build -t nypdvisionzeroaccountability /compstat-vs-moving-violation-enforcement/ec2/
+  - docker run -p 8983:8983 --name nypdvisionzeroaccountability -t nypdvisionzeroaccountability
+  - echo '#!bin/sh\ndocker start nypdvisionzeroaccountability' >> /var/lib/cloud/scripts/per-boot/startnypdvza && chmod +x /var/lib/cloud/scripts/per-boot/startnypdvza
 final_message: 'NYPDVisionZeroAccountability base is ready.'
 power_state:
   mode: reboot
