@@ -6,11 +6,12 @@ package_upgrade: true
 packages:
   - git
 runcmd:
-  - wget -qO- https://get.docker.io/gpg | sudo apt-key add - && sudo sh -c "echo deb http://get.docker.io/ubuntu docker main > /etc/apt/sources.list.d/docker.list" && sudo apt-get update && sudo apt-get install lxc-docker -y
-  - service docker restart
   - ls compstat-vs-moving-violation-enforcement || git clone https://github.com/NYPDVisionZeroAccountability/compstat-vs-moving-violation-enforcement.git
-  - docker build -t compstat-vs-moving-violation-enforcement compstat-vs-moving-violation-enforcement/ec2/
-  - docker run -p 8983:8983 --name solr -t compstat-vs-moving-violation-enforcement
+  - docker -v || compstat-vs-moving-violation-enforcement/ec2/builddocker.sh
+  - service docker restart
+  - docker build -t NYPDVisionZeroAccountability compstat-vs-moving-violation-enforcement/ec2/
+  - docker run -p 8983:8983 --name NYPDVisionZeroAccountability -t NYPDVisionZeroAccountability
+  - echo '#!bin/sh\ndocker start NYPDVisionZeroAccountability' >> /var/lib/cloud/scripts/per-boot/startnypdvza && chmod +x /var/lib/cloud/scripts/per-boot/startnypdvza
 final_message: 'NYPDVisionZeroAccountability base is ready.'
 power_state:
   mode: reboot
