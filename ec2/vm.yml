@@ -13,6 +13,7 @@ runcmd:
   - ls /compstat-vs-moving-violation-enforcement || git clone https://github.com/NYPDVisionZeroAccountability/compstat-vs-moving-violation-enforcement.git
   - docker -v || /compstat-vs-moving-violation-enforcement/ec2/builddocker.sh
   - service docker restart
+  - sleep 2
   - docker build -t nypdvisionzeroaccountability /compstat-vs-moving-violation-enforcement/ec2/
   - docker run -p 8983:8983 --name nypdvisionzeroaccountability -t nypdvisionzeroaccountability
   - echo '#!bin/sh\ndocker start nypdvisionzeroaccountability' >> /var/lib/cloud/scripts/per-boot/startnypdvza && chmod +x /var/lib/cloud/scripts/per-boot/startnypdvza
