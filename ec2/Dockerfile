@@ -8,6 +8,7 @@ RUN apt-get -y install unzip
 RUN git clone https://github.com/NYPDVisionZeroAccountability/compstat-vs-moving-violation-enforcement.git
 
 RUN useradd -m devuser
+RUN adduser devuser sudo
 
 ENV SOLR_VERSION 5.2.1
 ENV SOLR solr-$SOLR_VERSION
