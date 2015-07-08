@@ -7,8 +7,9 @@ if __name__ == '__main__':
     months = json.loads(contents)
     rows = []
     for month in months:
-        for precinct in month['precincts']:
+        for i, precinct in enumerate(month['precincts']):
             row = {
+                'id': i,
                 'precinct': precinct['id'],
                 'month': month['month'],
                 'name': month['name'],

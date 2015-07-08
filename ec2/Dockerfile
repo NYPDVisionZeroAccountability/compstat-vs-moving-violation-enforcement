@@ -5,14 +5,16 @@ RUN apt-get -y install git
 RUN apt-get -y install wget
 RUN apt-get -y install unzip
 
-RUN git clone https://github.com/NYPDVisionZeroAccountability/compstat-vs-moving-violation-enforcement.git
-
 RUN useradd -m devuser
 RUN adduser devuser sudo
+
+USER $SOLR_USER
 
 ENV SOLR_VERSION 5.2.1
 ENV SOLR solr-$SOLR_VERSION
 ENV SOLR_USER devuser
+
+RUN git clone https://github.com/NYPDVisionZeroAccountability/compstat-vs-moving-violation-enforcement.git
 
 RUN apt-get -y install lsof procps
 RUN mkdir -p /opt
@@ -26,5 +28,4 @@ RUN apt-get -y install openjdk-7-jre-headless
 
 EXPOSE 8983
 WORKDIR /opt/solr
-USER $SOLR_USER
 CMD ["/bin/bash", "-c", "/opt/solr/bin/solr -f"]
